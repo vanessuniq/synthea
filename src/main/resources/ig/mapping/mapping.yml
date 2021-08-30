@@ -1,0 +1,122 @@
+codeableConceptIdentifiers:
+  CancerGenomicsReport:
+    codes: [81247-9]
+    system: http://loinc.org
+    elementName: code
+  CancerDiseaseStatus:
+    codes: [88040-1]
+    system: http://loinc.org
+    elementName: code
+  CancerGeneticVariant:
+    codes: [69548-6]
+    system: http://loinc.org
+    elementName: code
+  CancerRelatedMedicationStatement:
+    codes: [1114085, 993452, 1737449, 1732186, 1790099, 583214,727762, 200064,
+             310261, 1658084, 672149, 1940648, 2119714, 1946840, 1601380, 873983,
+             198240, 1734919, 597195, 1790099, 1732186, 583214]
+    system: http://www.nlm.nih.gov/research/umls/rxnorm
+    elementName: medicationCodeableConcept
+  CancerRelatedRadiationProcedure:
+    codes: [447759004, 384692006, 113120007, 33195004, 385798007, 108290001]
+    system: http://snomed.info/sct
+    elementName: code
+  CancerRelatedSurgicalProcedure:
+    codes: [396487001, 443497002, 234262008, 392021009, 69031006, 387607004, 43075005, 90470006]
+    system: http://snomed.info/sct
+    elementName: code
+  ComorbidCondition:
+    codes: [88805009, 59621000, 87433001, 185086009, 44054006, 83664006, 127013003, 239872002,
+             201834006, 239873007, 271737000, 370143000]
+    system: http://snomed.info/sct
+    elementName: code
+  ECOGPerformanceStatus:
+    codes: [89247-1]
+    system: http://loinc.org
+    elementName: code
+  GenomicRegionStudied:
+    codes: [53041-0]
+    system: http://loinc.org
+    elementName: code
+  KarnofskyPerformanceStatus:
+    codes: [89243-0]
+    system: http://loinc.org
+    elementName: code
+  PrimaryCancerCondition:
+    codes: [188151006, 254837009, 93761005, 109838007, 363406005, 94260004, 254637007,
+             254632001, 424132000, 425048006, 422968005, 423121009, 67811000119102,
+             67821000119109, 67831000119107, 67841000119103, 126906006, 92691004, 314994000]
+    system: http://snomed.info/sct
+    elementName: code
+  SecondaryCancerCondition:
+    codes: [ ]
+    system: null
+    elementName: null
+  TNMClinicalDistantMetastasesCategory:
+    codes: [21907-1]
+    system: http://loinc.org
+    elementName: code
+  TNMClinicalPrimaryTumorCategory:
+    codes: [21905-5]
+    system: http://loinc.org
+    elementName: code
+  TNMClinicalRegionalNodesCategory:
+    codes: [21906-3]
+    system: http://loinc.org
+    elementName: code
+  TNMClinicalStageGroup:
+    codes: [21908-9]
+    system: http://loinc.org
+    elementName: code
+  TNMPathologicalDistantMetastasesCategory:
+    codes: [21901-4]
+    system: http://loinc.org
+    elementName: code
+  TNMPathologicalPrimaryTumorCategory:
+    codes: [21899-0]
+    system: http://loinc.org
+    elementName: code
+  TNMPathologicalRegionalNodesCategory:
+    codes: [21900-6]
+    system: http://loinc.org
+    elementName: code
+  TNMPathologicalStageGroup:
+    codes: [21902-2]
+    system: http://loinc.org
+    elementName: code
+  TumorMarker:
+    codes: [85319-2, 85318-4, 85337-4, 85339-0, 2857-1]
+    system: http://loinc.org
+    elementName: code
+profileIdentifiers:
+  CancerPatient: Patient
+fixedCodeableConcepts:
+  ComorbidCondition:
+    codes: [398192003]
+    system: http://snomed.info/sct
+    elementName: category
+  GenomicRegionStudied:
+    codes: [laboratory]
+    system: http://terminology.hl7.org/CodeSystem/observation-category
+    elementName: category
+  PrimaryCancerCondition:
+    codes: [64572001]
+    system: http://snomed.info/sct
+    elementName: category
+expressions:
+    variables: text
+    expression: text.split(" ")[0]
+#references:
+#  PrimaryCancerCondition:
+#    subject: CancerPatient
+#  CancerGenomicsReport:
+#    subject: CancerPatient
+#    specimen: GeneticSpecimen
+#  CancerDiseaseStatus:
+#    performer: Practitioner
+#    subject: CancerPatient
+#    focus: PrimaryCancerCondition
+
+
+
+

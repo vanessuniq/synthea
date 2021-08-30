@@ -136,6 +136,7 @@ import org.mitre.synthea.helpers.Config;
 import org.mitre.synthea.helpers.RandomNumberGenerator;
 import org.mitre.synthea.helpers.SimpleCSV;
 import org.mitre.synthea.helpers.Utilities;
+import org.mitre.synthea.importers.IgImporter;
 import org.mitre.synthea.world.agents.Clinician;
 import org.mitre.synthea.world.agents.Payer;
 import org.mitre.synthea.world.agents.Person;
@@ -182,6 +183,8 @@ public class FhirR4 {
       Config.getAsBoolean("exporter.fhir.transaction_bundle");
   protected static boolean USE_US_CORE_IG =
       Config.getAsBoolean("exporter.fhir.use_us_core_ig");
+  protected static boolean USE_IMPORTED_IG =
+          Config.getAsBoolean("exporter.fhir.use_imported_ig");
 
   private static final String COUNTRY_CODE = Config.get("generate.geography.country_code");
 
@@ -338,6 +341,11 @@ public class FhirR4 {
       // Add Provenance to the Bundle
       provenance(bundle, person, stopTime);
     }
+
+    if(USE_IMPORTED_IG) {
+      IgImporter.convertBundleToIg(bundle, person);
+    }
+
     return bundle;
   }
 
