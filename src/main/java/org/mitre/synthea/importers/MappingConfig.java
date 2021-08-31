@@ -30,7 +30,7 @@ public class MappingConfig {
         return this.codeableConceptIdentifiers;
     }
 
-    public Map<String, CodeIdentifier>  getFixedCodeableConcepts() {
+    public Map<String, CodeIdentifier> getFixedCodeableConcepts() {
         return this.fixedCodeableConcepts;
     }
 
