@@ -1,6 +1,7 @@
 package org.mitre.synthea.importers;
 
 import com.google.gson.*;
+import org.apache.commons.lang3.StringUtils;
 import org.hl7.fhir.r4.model.*;
 
 import java.io.*;
@@ -164,7 +165,25 @@ public class IgImporter {
                     }
                     if (matchingProfile != null) {
                         System.out.println("Matching profile: " + matchingProfile);
-                        entry.setFullUrl(objectsToFill.get(matchingProfile).resourceUrl);
+
+                        Meta meta = new Meta();
+                        meta.addProfile(objectsToFill.get(matchingProfile).resourceUrl);
+                        resource.setMeta(meta);
+
+                        CodeIdentifier code = mappingConfig.getFixedCodeableConcepts().get(matchingProfile);
+                        if(code != null &&
+                                classHasMethod(clazz, "set" + StringUtils.capitalize(code.elementName.toLowerCase()))) {
+                            Method method = clazz.getMethod(
+                                    "set" + StringUtils.capitalize(code.elementName.toLowerCase()), List.class);
+
+                            List<CodeableConcept> codeableConcepts = new ArrayList<>();
+                            codeableConcepts.add(new CodeableConcept().addCoding(new Coding()
+                                            .setSystem(code.system)
+                                            .setCode(String.valueOf(code.codes.get(0)))));
+
+                            method.invoke(resource, codeableConcepts);
+                            entry.setResource(resource);
+                        }
                         exportBundle.addEntry(entry);
                     }
                 }
