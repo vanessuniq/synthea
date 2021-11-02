@@ -62,6 +62,7 @@ public class Provider implements QuadTreeElement, Serializable {
       Config.get("generate.providers.selection_behavior", "nearest").toLowerCase();
   private static IProviderFinder providerFinder = buildProviderFinder();
 
+  @JSONSkip
   public Map<String, Object> attributes;
   public String uuid;
   private String locationUuid;
