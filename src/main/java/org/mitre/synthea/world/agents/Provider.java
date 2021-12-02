@@ -40,7 +40,7 @@ public class Provider implements QuadTreeElement, Serializable {
 
   public enum ProviderType {
     DIALYSIS, HOME_HEALTH, HOSPICE, HOSPITAL, LONG_TERM,
-    NURSING, PRIMARY, REHAD, URGENT, VETERAN, PHARMACY;
+    NURSING, PRIMARY, REHAB, URGENT, VETERAN, PHARMACY;
   }
 
   public static final String ENCOUNTERS = "encounters";
@@ -409,6 +409,8 @@ public class Provider implements QuadTreeElement, Serializable {
 
         Provider parsed = csvLineToProvider(row);
         parsed.type = providerType;
+        parsed.institutional =
+            (providerType == ProviderType.HOSPITAL || providerType == ProviderType.NURSING);
         parsed.servicesProvided.addAll(servicesProvided);
 
         if ("Yes".equals(row.remove("emergency"))) {
